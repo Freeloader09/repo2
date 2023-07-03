@@ -13,6 +13,8 @@ jobs:
       push-store-image:
         permissions: write-all
         runs-on: ubuntu-latest
+        permissions:
+          packages: write
         defaults:
           run:
             working-directory: '.'
