@@ -11,10 +11,7 @@ on:
 
 jobs:
       push-store-image:
-        permissions: write-all
         runs-on: ubuntu-latest
-        permissions:
-          packages: write
         defaults:
           run:
             working-directory: '.'
@@ -27,7 +24,7 @@ jobs:
             with:
               registry: ghcr.io
               username: ${{github.actor}}
-              password: ${{secrets.GITHUB_TOKEN}}
+              password: ${{secrets.GHCR_SECRET}}
 
           - name: 'Build repo2 Image'
             run: |
