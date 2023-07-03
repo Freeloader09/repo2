@@ -13,7 +13,7 @@ RUN \
         dagster-celery[flower,redis,kubernetes] \
         dagster-k8s \
         dagster-celery-k8s \
-    && pip install -e "/"
+    && pip install -e "/"  \
 # Cleanup
     &&  rm -rf /var \
     &&  rm -rf /root/.cache  \
