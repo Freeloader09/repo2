@@ -22,4 +22,4 @@ RUN \
 
 # ==> Add user code layer
 # Example pipelines
-#COPY build_cache/ /
+COPY build_cache/ /
