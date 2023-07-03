@@ -1,0 +1,12 @@
+dagster
+dagster-dbt
+pandas
+dbt-core
+dbt-bigquery
+dagster-gcp
+dagster-gcp-pandas
+plotly
+
+[dev]
+dagit
+pytest

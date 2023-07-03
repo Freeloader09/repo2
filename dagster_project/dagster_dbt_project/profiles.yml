@@ -1,0 +1,14 @@
+dagster_dbt_project:
+  outputs:
+    dev:
+      dataset: AWDB
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /bigquery_cred.json
+      location: EU
+      method: service-account
+      priority: interactive
+      project: black-circle-369718
+      threads: 2
+      type: bigquery
+  target: dev

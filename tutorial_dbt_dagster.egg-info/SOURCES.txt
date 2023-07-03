@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+setup.py
+tutorial_dbt_dagster.egg-info/PKG-INFO
+tutorial_dbt_dagster.egg-info/SOURCES.txt
+tutorial_dbt_dagster.egg-info/dependency_links.txt
+tutorial_dbt_dagster.egg-info/requires.txt
+tutorial_dbt_dagster.egg-info/top_level.txt
