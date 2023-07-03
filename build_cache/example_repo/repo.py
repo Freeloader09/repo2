@@ -1,30 +1,15 @@
-from collections import Counter
-
-from dagster import In, repository
-from dagster._core.definitions.decorators import op
-from dagster._core.definitions.decorators.job_decorator import job
-from dagster_aws.s3 import s3_pickle_io_manager, s3_resource
-from dagster_celery_k8s import celery_k8s_job_executor
+import requests
+import csv
+from dagster import job, op, get_dagster_logger
 
 
-@op(ins={"word": In()}, config_schema={"factor": int})
-def multiply_the_word(context, word):
-    return word * context.op_config["factor"]
+@op
+def hello_cereal():
+    response = requests.get("https://docs.dagster.io/assets/cereal.csv")
+    lines = response.text.split("\n")
+    cereals = [row for row in csv.DictReader(lines)]
+    get_dagster_logger().info(f"Found {len(cereals)} cereals")
 
-
-@op(ins={"word": In()})
-def count_letters(_context, word):
-    return dict(Counter(word))
-
-
-@job(
-    resource_defs={"s3": s3_resource, "io_manager": s3_pickle_io_manager},
-    executor_def=celery_k8s_job_executor,
-)
-def example_pipe():
-    count_letters(multiply_the_word())
-
-
-@repository
-def example_repo():
-    return [example_pipe]
+@job
+def hello_cereal_job():
+    hello_cereal()
